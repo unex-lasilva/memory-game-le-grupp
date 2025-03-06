@@ -132,7 +132,7 @@ fun main() {
                 tamanhoTabuleiro = 4
             }
 
-            // Apenas para este exercício, forçamos o tamanho 4x4 conforme solicitado
+            // Opção que irá aparecer caso escolha o Tabuleiro 4x4
             tamanhoTabuleiro = 4
             println("Tabuleiro 4x4 configurado.")
         }
