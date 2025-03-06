@@ -6,7 +6,7 @@ fun main() {
         AZUL, VERMELHO, AMARELO, PRETO
     }
 
-   
+   //Tiago
     class Carta(val id: Int, val cor: CorCarta, var virada: Boolean = false, var encontrada: Boolean = false) {
         override fun toString(): String {
             return if (virada || encontrada) {
@@ -22,7 +22,7 @@ fun main() {
         }
     }
 
-    
+    //Tiago
     class Participante(val nome: String, val cor: CorCarta, var pontuacao: Int = 0) {
         fun ganharPontos(pontos: Int) {
             pontuacao += pontos
@@ -33,7 +33,7 @@ fun main() {
         }
     }
 
-    
+    //Tiago
     class JogoDaMemoria {
         private var tabuleiro = Array(4) { Array<Carta?>(4) { null } }
         private var participantes = arrayOf<Participante>()
@@ -247,7 +247,7 @@ fun main() {
             anunciarVencedor()
         }
 
-        
+        //Tiago
         private fun selecionarCarta(): Pair<Int, Int>? {
             var tentativas = 0
 
@@ -286,7 +286,7 @@ fun main() {
             return null
         }
 
-        
+        //Tiago
         private fun verificarPar(primeiraPosicao: Pair<Int, Int>, segundaPosicao: Pair<Int, Int>) {
             val primeiraCarta = tabuleiro[primeiraPosicao.first][primeiraPosicao.second]
             val segundaCarta = tabuleiro[segundaPosicao.first][segundaPosicao.second]
@@ -343,7 +343,7 @@ fun main() {
             Thread.sleep(2000)
         }
 
-        
+        //Tiago
         private fun verificarFimDeJogo(): Boolean {
             for (i in 0 until tamanhoTabuleiro) {
                 for (j in 0 until tamanhoTabuleiro) {
@@ -389,7 +389,7 @@ fun main() {
             }
         }
 
-        
+        //Tiago
         private fun exibirRegras() {
             println("\n=== REGRAS DO JOGO ===")
             println("- O jogo da memória é jogado em um tabuleiro de cartas viradas para baixo.")
