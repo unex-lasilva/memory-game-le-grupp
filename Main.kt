@@ -11,13 +11,13 @@ fun main() {
         override fun toString(): String {
             return if (virada || encontrada) {
                 when (cor) {
-                    CorCarta.AZUL -> "🔵$id"
-                    CorCarta.VERMELHO -> "🔴$id"
-                    CorCarta.AMARELO -> "🟡$id"
-                    CorCarta.PRETO -> "⚫$id"
+                    CorCarta.AZUL -> "azul$id"
+                    CorCarta.VERMELHO -> "vermelho$id"
+                    CorCarta.AMARELO -> "amarelo$id"
+                    CorCarta.PRETO -> "preto$id"
                 }
             } else {
-                "🎴" 
+                "flores" 
             }
         }
     }
