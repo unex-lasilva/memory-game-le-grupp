@@ -1,3 +1,4 @@
+//Tiago fez o codigo e Diogo corrigiu os erros
 import kotlin.random.Random
 
 enum class CorCarta {
