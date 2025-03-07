@@ -1,12 +1,12 @@
+import kotlin.random.Random
+
+enum class CorCarta {
+    AZUL, VERMELHO, AMARELO, PRETO
+}
+
 fun main() {
-    import kotlin.random.Random
 
-
-            enum class CorCarta {
-        AZUL, VERMELHO, AMARELO, PRETO
-    }
-
-   //Tiago
+    //Tiago
     class Carta(val id: Int, val cor: CorCarta, var virada: Boolean = false, var encontrada: Boolean = false) {
         override fun toString(): String {
             return if (virada || encontrada) {
@@ -17,7 +17,7 @@ fun main() {
                     CorCarta.PRETO -> "preto$id"
                 }
             } else {
-                "flores" 
+                "flores"
             }
         }
     }
@@ -42,7 +42,7 @@ fun main() {
         private var cartaViradaAtualmente: Carta? = null
         private var posicaoCartaVirada: Pair<Int, Int>? = null
 
-        
+
         fun iniciar() {
             println("\n==== JOGO DA MEMÓRIA ====")
 
@@ -64,7 +64,7 @@ fun main() {
             } while (opcao != 4)
         }
 
-        
+
         private fun exibirMenu() {
             println("\nMENU PRINCIPAL:")
             println("1. Iniciar")
@@ -74,7 +74,7 @@ fun main() {
             print("Escolha uma opção: ")
         }
 
-        
+
         private fun lerOpcao(): Int {
             return try {
                 readLine()?.toInt() ?: 0
@@ -83,14 +83,14 @@ fun main() {
             }
         }
 
-        
+
         private fun configurarJogo() {
             solicitarTamanhoTabuleiro()
             criarParticipantes()
             criarTabuleiro()
         }
 
-        
+
         private fun solicitarTamanhoTabuleiro() {
             var tamanhoValido = false
             var tentativas = 0
@@ -132,12 +132,12 @@ fun main() {
                 tamanhoTabuleiro = 4
             }
 
-            
+
             tamanhoTabuleiro = 4
             println("Tabuleiro 4x4 configurado.")
         }
 
-        
+
         private fun criarParticipantes() {
             println("\nRegistro dos participantes:")
 
@@ -157,27 +157,27 @@ fun main() {
             println("- ${participantes[1].nome} (${participantes[1].cor})")
         }
 
-        
+
         private fun criarTabuleiro() {
-            
+
             tabuleiro = Array(tamanhoTabuleiro) { Array(tamanhoTabuleiro) { null } }
 
-            
+
             val cartas = mutableListOf<Carta>()
 
-            
+
             cartas.add(Carta(1, CorCarta.AZUL))
             cartas.add(Carta(1, CorCarta.AZUL))
             cartas.add(Carta(2, CorCarta.AZUL))
             cartas.add(Carta(2, CorCarta.AZUL))
 
-            
+
             cartas.add(Carta(3, CorCarta.VERMELHO))
             cartas.add(Carta(3, CorCarta.VERMELHO))
             cartas.add(Carta(4, CorCarta.VERMELHO))
             cartas.add(Carta(4, CorCarta.VERMELHO))
 
-            
+
             cartas.add(Carta(5, CorCarta.AMARELO))
             cartas.add(Carta(5, CorCarta.AMARELO))
             cartas.add(Carta(6, CorCarta.AMARELO))
@@ -185,14 +185,14 @@ fun main() {
             cartas.add(Carta(7, CorCarta.AMARELO))
             cartas.add(Carta(7, CorCarta.AMARELO))
 
-            
+
             cartas.add(Carta(8, CorCarta.PRETO))
             cartas.add(Carta(8, CorCarta.PRETO))
 
-            
+
             cartas.shuffle()
 
-            
+
             var index = 0
             for (i in 0 until tamanhoTabuleiro) {
                 for (j in 0 until tamanhoTabuleiro) {
@@ -202,7 +202,7 @@ fun main() {
             }
         }
 
-       
+
         private fun exibirTabuleiro() {
             println("\n  " + (0 until tamanhoTabuleiro).joinToString(" ") { "$it " })
 
@@ -215,7 +215,7 @@ fun main() {
             }
         }
 
-        
+
         private fun jogar() {
             var jogoAcabou = false
 
@@ -224,26 +224,26 @@ fun main() {
                 println("\nVez de ${participantes[participanteAtual].nome} (${participantes[participanteAtual].cor})")
                 println("Pontuação: ${participantes[participanteAtual].pontuacao}")
 
-                
+
                 val primeiraCarta = selecionarCarta() ?: continue
                 exibirTabuleiro()
 
-                
+
                 println("Selecione a segunda carta:")
                 val segundaCarta = selecionarCarta() ?: continue
                 exibirTabuleiro()
 
-                
+
                 verificarPar(primeiraCarta, segundaCarta)
 
-                
+
                 jogoAcabou = verificarFimDeJogo()
 
-                
+
                 participanteAtual = 1 - participanteAtual
             }
 
-            
+
             anunciarVencedor()
         }
 
@@ -264,14 +264,14 @@ fun main() {
                     continue
                 }
 
-                
+
                 if (tabuleiro[linha][coluna]?.virada == true || tabuleiro[linha][coluna]?.encontrada == true) {
                     println("A carta da posição informada já está virada, por favor, escolha outra posição")
                     tentativas++
                     continue
                 }
 
-                
+
                 tabuleiro[linha][coluna]?.virada = true
 
                 if (cartaViradaAtualmente == null) {
@@ -292,12 +292,12 @@ fun main() {
             val segundaCarta = tabuleiro[segundaPosicao.first][segundaPosicao.second]
 
             if (primeiraCarta?.id == segundaCarta?.id) {
-                
+
                 println("Par encontrado!")
                 primeiraCarta?.encontrada = true
                 segundaCarta?.encontrada = true
 
-                
+
                 when (primeiraCarta?.cor) {
                     CorCarta.AMARELO -> {
                         participantes[participanteAtual].ganharPontos(1)
@@ -313,25 +313,25 @@ fun main() {
                         println("${participantes[participanteAtual].nome} ganhou 5 pontos!")
                     }
                     else -> {
-                        
+
                         participantes[participanteAtual].ganharPontos(1)
                         println("${participantes[participanteAtual].nome} ganhou 1 ponto!")
                     }
                 }
             } else {
-                
+
                 println("Par não encontrado.")
                 primeiraCarta?.virada = false
                 segundaCarta?.virada = false
 
-                
+
                 if (segundaCarta?.cor == CorCarta.PRETO || primeiraCarta?.cor == CorCarta.PRETO) {
                     println("${participantes[participanteAtual].nome} errou o par da carta preta e perdeu o jogo!")
                     anunciarVencedor(vencedorForcado = 1 - participanteAtual)
                     return
                 }
 
-                
+
                 val corAdversario = participantes[1 - participanteAtual].cor
                 if (primeiraCarta?.cor == corAdversario || segundaCarta?.cor == corAdversario) {
                     participantes[participanteAtual].perderPontos(2)
@@ -339,7 +339,7 @@ fun main() {
                 }
             }
 
-            
+
             Thread.sleep(2000)
         }
 
@@ -355,7 +355,7 @@ fun main() {
             return true
         }
 
-        
+
         private fun anunciarVencedor(vencedorForcado: Int? = null) {
             val vencedor = when {
                 vencedorForcado != null -> vencedorForcado
@@ -376,7 +376,7 @@ fun main() {
             }
         }
 
-        
+
         private fun exibirPontuacoes() {
             if (participantes.isEmpty()) {
                 println("\nAinda não há participantes registrados.")
