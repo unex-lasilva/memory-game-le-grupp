@@ -38,5 +38,5 @@ Vamos exemplificar essas regras iniciais para vocês. Um exemplo sempre é uma b
 
 
 **Team members:**
-1. *Nome do membro* - *e-mail*
+1. *Tiago Sângil Palmeira Lima* - *tiagosanpalmeira@gmail.com*
 2. *Nome do membro* - *e-mail*
